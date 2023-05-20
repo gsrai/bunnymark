@@ -1,6 +1,4 @@
-# Asteroids4j
-
-clone of the classic asteroids arcade game, written in Java using Libgdx.
+# Bunnymark
 
 ## Running locally
 
