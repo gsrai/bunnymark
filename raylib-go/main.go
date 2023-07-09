@@ -8,9 +8,8 @@ import (
 
 const (
 	screenWidth  = 800
-	screenHeight = 450
-	maxBunnies   = 300000
-	maxBatchSize = 8192
+	screenHeight = 600
+	maxBunnies   = 200_000
 )
 
 type Bunny struct {

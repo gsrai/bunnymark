@@ -30,9 +30,9 @@ GC pause was for 1 second at least, 25fps!
 
 ## Raylib
 
-~140k bunnies at ~60 fps
+~200k bunnies at ~60 fps
 
-70% CPU (6 threads) | 90% GPU | 105 MB RAM
+76% CPU (6 threads) | 95% GPU | 100 MB RAM
 
 ## Bevy
 
@@ -58,7 +58,7 @@ GC pause was for 1 second at least, 25fps!
 
 ~200k bunnies at ~60 fps
 
-97% CPU (14 threads) | 96% GPU | 95 MB RAM
+97% CPU (14 threads) | 96% GPU | 110 MB RAM
 
 ## GGEZ
 
@@ -71,8 +71,8 @@ GC pause was for 1 second at least, 25fps!
 | Library    | Bunnies | FPS | CPU               | GPU | RAM    |
 | ---------- | ------- | --- | ----------------- | --- | ------ |
 | Libgdx     | 370k    | 60  | 70% (45 threads)  | 78% | 585 MB |
-| Raylib     | 140k    | 60  | 70% (6 threads)   | 90% | 105 MB |
-| Raylib-go  | 200k    | 60  | 97% (14 threads)  | 96% | 95 MB  |
+| Raylib     | 200k    | 60  | 76% (6 threads)   | 95% | 100 MB |
+| Raylib-go  | 200k    | 58  | 97% (14 threads)  | 96% | 110 MB |
 | Bevy       | 80k     | 60  | 65% (21 threads)  | 88% | 375 MB |
 | Pixi.js    | 66k     | 60  | ?                 | ?   | ?      |
 | Ebitengine | 87k     | 60  | 102% (22 threads) | 20% | 225 MB |
