@@ -1,35 +1,71 @@
-import { Scene } from 'phaser';
+import { Scene } from "phaser";
 
-export class Game extends Scene
-{
-    camera: Phaser.Cameras.Scene2D.Camera;
-    background: Phaser.GameObjects.Image;
-    msg_text : Phaser.GameObjects.Text;
+export class Game extends Scene {
+  camera: Phaser.Cameras.Scene2D.Camera;
+  bunnies: Array<Phaser.GameObjects.Image>;
+  bunnyCount: number;
+  bunnyType: number;
+  maxX: number;
+  maxY: number;
+  fpsText: string;
 
-    constructor ()
-    {
-        super('Game');
+  constructor() {
+    super("Game");
+    this.bunnies = [];
+    this.bunnyCount = 0;
+    this.bunnyType = 0;
+    this.maxX = 0;
+    this.maxY = 0;
+  }
+
+  preload() {
+    this.load.setPath("assets");
+    this.load.spritesheet("bunnys", "bunnys.png", {
+      frameWidth: 26,
+      frameHeight: 37,
+    });
+  }
+
+  create() {
+    this.maxX = this.sys.game.config.width;
+    this.maxY = this.sys.game.config.height;
+
+    this.fpsText = this.add.text(10, this.maxY - 20, "FPS: 0", {
+      font: "16px Arial",
+      fill: "#ffffff",
+    });
+
+    this.input.on("pointerdown", () => this.addBunnies(1000));
+    this.input.on("pointerup", () => {
+      this.bunnyType++;
+      this.bunnyType %= 5;
+    });
+  }
+
+  addBunnies(num: number) {
+    for (let i = 0; i < num; i++) {
+      const bunny = this.physics.add.image(
+        Phaser.Math.Between(0, this.maxX),
+        Phaser.Math.Between(0, this.maxY),
+        "bunnys",
+        this.bunnyType
+      );
+
+      bunny.setVelocity(
+        Phaser.Math.Between(-300, 300),
+        Phaser.Math.Between(-300, 300)
+      );
+      bunny.setBounce(1, 1);
+      bunny.setCollideWorldBounds(true);
+
+      this.bunnies.push(bunny);
     }
 
-    create ()
-    {
-        this.camera = this.cameras.main;
-        this.camera.setBackgroundColor(0x00ff00);
+    this.bunnyCount += num;
+    console.log(`Bunnies: ${this.bunnyCount}`);
+  }
 
-        this.background = this.add.image(512, 384, 'background');
-        this.background.setAlpha(0.5);
-
-        this.msg_text = this.add.text(512, 384, 'Make something fun!\nand share it with us:\nsupport@phaser.io', {
-            fontFamily: 'Arial Black', fontSize: 38, color: '#ffffff',
-            stroke: '#000000', strokeThickness: 8,
-            align: 'center'
-        });
-        this.msg_text.setOrigin(0.5);
-
-        this.input.once('pointerdown', () => {
-
-            this.scene.start('GameOver');
-
-        });
-    }
+  update() {
+    this.fpsText.setText(`FPS: ${Math.round(this.game.loop.actualFps)}`);
+  }
 }
