@@ -82,3 +82,18 @@ In order to deploy your game, you will need to upload *all* of the contents of t
 ### esbuild
 
 If you want to customize your build, such as adding plugin (i.e. for loading CSS or fonts), you can modify the `esbuild/build.prod.mjs` and `esbuild/dev.server.mjs` files for cross-project changes, or you can modify and/or create new configuration files and target them in specific npm tasks inside of `package.json`. Please see the [esbuild documentation](https://esbuild.github.io/api/) for more information.
+
+---
+
+## Pixi vs Phaser
+
+Phaser got 14k bunnies before lagging
+Pixijs got 50k bunnies before lagging
+
+## TODO
+
+* bitECS https://github.com/NateTheGreatt/bitECS/blob/master/docs/INTRO.md
+* biome
+* things to try: phaser webgl renderer
+* use ParticleContainer like pixi?
+* also randomise velocity and starting pos
